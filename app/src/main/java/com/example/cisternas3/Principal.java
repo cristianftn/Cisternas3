@@ -313,7 +313,7 @@ public class Principal extends AppCompatActivity {
 
         }
 
-
+//*********************************prueba*********************************************************
 
     }
     public void chat(View view){
