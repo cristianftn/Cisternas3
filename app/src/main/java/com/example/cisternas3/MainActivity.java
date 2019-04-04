@@ -55,11 +55,11 @@ public class MainActivity extends AppCompatActivity {
                     JSONArray values = jsonResponse.getJSONArray("matriculas");
 
                     for (int i = 0; i < values.length(); i++) {
-                        JSONObject animal = values.getJSONObject(i);
+                        JSONObject matricula = values.getJSONObject(i);
 
                         //int id = animal.getInt("id");
-                        species = animal.getString("matricula");
-                        Log.e("BIENBIEN", "" + ":"+ " animales: " + animal);
+                        species = matricula.getString("matricula");
+                        Log.e("BIENBIEN", "" + ":"+ " animales: " + matricula);
                         listaCisternas.add(species);
                         //String name = animal.getString("name");
                         //println(id + ", " + species + ", " + name);

@@ -35,7 +35,7 @@ public class Principal extends AppCompatActivity {
     int diaEntrega;
     private int anyo,mes,dia;
     boolean semaforo = false;
-
+    String nombreVentana;
     ArrayList<String> datosSQL = new ArrayList<>();
 
     @Override
@@ -65,7 +65,7 @@ public class Principal extends AppCompatActivity {
         entregaFecha = (EditText)findViewById(R.id.entregaFecha);
         recogidaFecha = (EditText)findViewById(R.id.recogidaFecha);
 
-        String nombreVentana = getIntent().getExtras().getString("nombreUser");
+        nombreVentana = getIntent().getExtras().getString("nombreUser");
         nombreUser.setText(nombreVentana);
         String matriculaNombre = getIntent().getExtras().getString("nombreMatricula");
         nombreMatricula.setText(matriculaNombre);
@@ -317,8 +317,12 @@ public class Principal extends AppCompatActivity {
 
     }
     public void chat(View view){
-        Intent i = new Intent(this,Chat.class);
-        startActivity(i);
+
+
+        Intent ven=new Intent(Principal.this,Chat.class);
+        ven.putExtra("nombreUser", nombreVentana);
+        //ven.putExtra("nombreMatricula", guardarCisterna);
+        startActivity(ven);
     }
 
 }
