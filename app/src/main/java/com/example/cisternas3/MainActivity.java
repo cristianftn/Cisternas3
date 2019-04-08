@@ -105,10 +105,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void ingresar(View v){
 
-       final String id=nombre.getText().toString();
+       final String id = nombre.getText().toString();
        final String contrasena=pass.getText().toString();
        final String guardarCisterna = cisternas.getSelectedItem().toString();
-
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -116,26 +115,18 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject jsonResponse = new JSONObject(response);
                     boolean success= jsonResponse.getBoolean("success");
                     final String nombre = jsonResponse.getString("nombre");
-                   // final String id = jsonResponse.getString("id");
+
                     final String pass = jsonResponse.getString("pass");
-
-
                     Log.e("ADIOS", "" + nombre + " " + pass+" " + response);
 
-                    //if(usuario.equals(nombre)&&contrasena.equals(pass)){
-                    //si son iguales entonces vamos a otra ventana
-                    //Menu es una nueva actividad empty
                     if(success){
                         Intent ven=new Intent(MainActivity.this,Principal.class);
                         ven.putExtra("nombreUser", nombre);
                         ven.putExtra("nombreMatricula", guardarCisterna);
+                        ven.putExtra("id", id);
                         startActivity(ven);
                         Toast.makeText(getApplicationContext(),"Login exitoso " , Toast.LENGTH_SHORT).show();
-                        //limpiamos las las cajas de texto
-                        //}else{
-                        //
 
-                        //}
                     }else{
                         Toast.makeText(getApplicationContext(),"Usuario o contraseña incorrecta: " , Toast.LENGTH_SHORT).show();
                     }
@@ -144,10 +135,8 @@ public class MainActivity extends AppCompatActivity {
                     Log.e("ADIOS", "" + nombre + " " + pass+" " + response);
                     Toast.makeText(getApplicationContext(),"Nombre o contraseña incorrectos" , Toast.LENGTH_SHORT).show();
                 }
-
             }
         };
-
         LoginRequest loginRequest = new LoginRequest(id,contrasena,responseListener);
         RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
         queue.add(loginRequest);

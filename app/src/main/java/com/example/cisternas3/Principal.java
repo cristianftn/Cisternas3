@@ -36,6 +36,7 @@ public class Principal extends AppCompatActivity {
     private int anyo,mes,dia;
     boolean semaforo = false;
     String nombreVentana;
+    String idNombreVentana;
     ArrayList<String> datosSQL = new ArrayList<>();
 
     @Override
@@ -69,7 +70,7 @@ public class Principal extends AppCompatActivity {
         nombreUser.setText(nombreVentana);
         String matriculaNombre = getIntent().getExtras().getString("nombreMatricula");
         nombreMatricula.setText(matriculaNombre);
-
+        idNombreVentana=getIntent().getExtras().getString("id");
 
 
         Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -258,17 +259,17 @@ public class Principal extends AppCompatActivity {
 
 
 
-        if (guardarFechaEntrega.matches("")){
+      //  if (guardarFechaEntrega.matches("")){
             DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                     recogidaFecha.setText(dayOfMonth+"/"+(month+1)+"/"+year);
-                    diaRecogida= dayOfMonth;
+                    //diaRecogida= dayOfMonth;
                 }
             },anyo,mes,dia);
             datePickerDialog.show();
-        }
-        else{
+       // }
+        /*else{
             DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -278,7 +279,7 @@ public class Principal extends AppCompatActivity {
             },anyo,mes,diaEntrega-1);
             datePickerDialog.show();
 
-        }
+        }*/
     }
 
     public void fechaEntrega1(View v){
@@ -291,17 +292,17 @@ public class Principal extends AppCompatActivity {
 
 
 
-        if (guardarFechaRecogida.matches("")){
+        //if (guardarFechaRecogida.matches("")){
             DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                     entregaFecha.setText(dayOfMonth+"/"+(month+1)+"/"+year);
-                    diaEntrega= dayOfMonth;
+                   // diaEntrega= dayOfMonth;
                 }
             },anyo,mes,dia);
             datePickerDialog.show();
-        }
-        else{
+      //  }
+       /* else{
             DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -311,7 +312,7 @@ public class Principal extends AppCompatActivity {
             },anyo,mes,diaRecogida+1);
             datePickerDialog.show();
 
-        }
+        }*/
 
 
 
@@ -321,6 +322,7 @@ public class Principal extends AppCompatActivity {
 
         Intent ven=new Intent(Principal.this,Chat.class);
         ven.putExtra("nombreUser", nombreVentana);
+        ven.putExtra("idNombreVentana",idNombreVentana);
         //ven.putExtra("nombreMatricula", guardarCisterna);
         startActivity(ven);
     }

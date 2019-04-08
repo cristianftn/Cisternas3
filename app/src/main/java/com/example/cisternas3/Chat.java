@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 
 public class Chat extends AppCompatActivity {
     ListView listaUsuarios;
+    String guardarId;
 
 
     @Override
@@ -26,8 +28,8 @@ public class Chat extends AppCompatActivity {
         setContentView(R.layout.activity_chat);
         listaUsuarios = (ListView) findViewById(R.id.listaUsuarios);
      String nombreVentana = getIntent().getExtras().getString("nombreUser");
-
-
+        guardarId = getIntent().getExtras().getString("idNombreVentana");
+        Toast.makeText(getApplicationContext(),"id:  " + guardarId, Toast.LENGTH_SHORT).show();
         final ArrayList<String> Usuarioslista = new ArrayList<>();
 
         Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -39,13 +41,13 @@ public class Chat extends AppCompatActivity {
                 String species;
                 try {
                     JSONObject jsonResponse = new JSONObject(response);
-                    JSONArray values = jsonResponse.getJSONArray("matriculas");
+                    JSONArray values = jsonResponse.getJSONArray("nombres");
 
                     for (int i = 0; i < values.length(); i++) {
                         JSONObject animal = values.getJSONObject(i);
 
                         //int id = animal.getInt("id");
-                        species = animal.getString("matricula");
+                        species = animal.getString("id");
                         Log.e("BIENBIEN", "" + ":"+ " animales: " + animal);
                         Usuarioslista.add(species);
                         //String name = animal.getString("name");
@@ -63,8 +65,8 @@ public class Chat extends AppCompatActivity {
 
         };
 
-        ListaUsuariosChatRequest listaUsuariosChatRequest = new ListaUsuariosChatRequest(nombreVentana,responseListener);
-        //RequestQueue queue = Volley.newRequestQueue(Chat.this);
-        //queue.add(actualizarMatriculasRequest);
+        ListaUsuariosChatRequest listaUsuariosChatRequest = new ListaUsuariosChatRequest(guardarId,responseListener);
+        RequestQueue queue = Volley.newRequestQueue(Chat.this);
+        queue.add(listaUsuariosChatRequest);
     }
 }
