@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class ListaUsuariosChatRequest extends StringRequest{
 
-    private static final String ListaUsuariosChat_REQUEST="http://192.168.1.47/ListaUsuariosChat.php";
+    private static final String ListaUsuariosChat_REQUEST="http://192.168.1.33/ListaUsuariosChat.php";
     private Map<String,String> params;
 
     public ListaUsuariosChatRequest(String nombre, Response.Listener<String> listener){

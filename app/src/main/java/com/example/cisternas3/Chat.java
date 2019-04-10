@@ -32,7 +32,7 @@ public class Chat extends AppCompatActivity {
         listaUsuarios = (ListView) findViewById(R.id.listaUsuarios);
         nombreVentana = getIntent().getExtras().getString("nombreUser");
         guardarId = getIntent().getExtras().getString("idNombreVentana");
-        Toast.makeText(getApplicationContext(),"id:  " + guardarId, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),"id:  " + guardarId, Toast.LENGTH_SHORT).show();
         final ArrayList<String> usuarioslista = new ArrayList<>();
 
         Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -86,7 +86,7 @@ public class Chat extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String guardarNum = usuarioslista.get(position);
-                Toast.makeText(getApplicationContext(),"guardarNum: " + guardarNum, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getApplicationContext(),"guardarNum: " + guardarNum, Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent( Chat.this, ChatMensaje.class );
                 intent.putExtra("usuOrigen", nombreVentana);
