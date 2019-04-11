@@ -29,6 +29,8 @@ public class ChatMensaje extends AppCompatActivity {
 String usuarioOrigen, usuarioDestino, fecha;
 EditText texto;
 ListView verMensaje;
+int tamanoAnterior = 0;
+boolean semaforo = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,14 +105,23 @@ ListView verMensaje;
 
                         guardarFilaCompleta = guardarUsuOrigen + "\n" + guardarMensaje + "\n" + fecha;
                         guardarMensajes.add(guardarFilaCompleta);
-                        Toast.makeText(getApplicationContext(), guardarFilaCompleta, Toast.LENGTH_SHORT).show();
-                        Log.e("BIENBIEN", "" + ":"+ " animales: " + animal);
+                       // Toast.makeText(getApplicationContext(), guardarFilaCompleta, Toast.LENGTH_SHORT).show();
+                       // Log.e("BIENBIEN", "" + ":"+ " animales: " + animal);
                        // usuarioslista.add(species);
                         //String name = animal.getString("name");
                         //println(id + ", " + species + ", " + name);
                     }
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(ChatMensaje.this, android.R.layout.simple_spinner_dropdown_item, guardarMensajes);
-                    verMensaje.setAdapter(adapter);
+                    if (tamanoAnterior == guardarMensajes.size()){
+                        semaforo=false;
+                    }else{
+                        semaforo=true;
+                    }
+                    if (semaforo==true){
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(ChatMensaje.this, android.R.layout.simple_spinner_dropdown_item, guardarMensajes);
+                        verMensaje.setAdapter(adapter);
+                    }
+                    tamanoAnterior  =  guardarMensajes.size();
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

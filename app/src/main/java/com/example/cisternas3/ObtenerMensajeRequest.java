@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ObtenerMensajeRequest extends StringRequest {
-    private static final String listaUsuariosChat_REQUEST="http://192.168.1.33/obtenerMensajes.php";
+    private static final String listaUsuariosChat_REQUEST="http://www.innovabilbao.com/app/obtenerMensajes.php";
     private Map<String,String> params;
 
     public ObtenerMensajeRequest(String usuarioOrigen,String usuarioDestino, Response.Listener<String> listener){
