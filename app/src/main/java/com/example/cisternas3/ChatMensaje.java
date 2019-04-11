@@ -112,10 +112,14 @@ boolean semaforo = true;
                         //println(id + ", " + species + ", " + name);
                     }
                     if (tamanoAnterior == guardarMensajes.size()){
+
                         semaforo=false;
+
                     }else{
+
                         semaforo=true;
                     }
+
                     if (semaforo==true){
                         ArrayAdapter<String> adapter = new ArrayAdapter<String>(ChatMensaje.this, android.R.layout.simple_spinner_dropdown_item, guardarMensajes);
                         verMensaje.setAdapter(adapter);
