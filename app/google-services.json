@@ -1,0 +1,44 @@
+{
+  "project_info": {
+    "project_number": "107012279416",
+    "firebase_url": "https://cisternas3-66691.firebaseio.com",
+    "project_id": "cisternas3-66691",
+    "storage_bucket": "cisternas3-66691.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107012279416:android:04e488975c0d49d7",
+        "android_client_info": {
+          "package_name": "com.example.cisternas3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "107012279416-94qk4gosflptdjcce9rghs6b2q1gdfta.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cisternas3",
+            "certificate_hash": "071228cbfa67168443102bd80e3097f4975255d0"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr9FrIxT6VpUFqR7uHtpOiE3hxmAJRLDU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "107012279416-cieh9jcp8pr4q3dnab6u18eliaigb0mp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
