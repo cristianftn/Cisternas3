@@ -86,6 +86,8 @@ boolean semaforo = true;
             String guardarIdMensaje, guardarUsuOrigen, guardarUsuDestino, guardarMensaje;
             String guardarFilaCompleta;
             final ArrayList<String> guardarMensajes = new ArrayList<>();
+            final ArrayList<MensajesPlantilla> listaMensajes = new ArrayList<MensajesPlantilla>();
+
 
             @Override
             public void onResponse(String response) {
@@ -103,13 +105,15 @@ boolean semaforo = true;
                         guardarUsuDestino = animal.getString("usuarioDestino");
                         guardarMensaje = animal.getString("mensaje");
 
-                        guardarFilaCompleta = guardarUsuOrigen + "\n" + guardarMensaje + "\n" + fecha;
+                        //guardarFilaCompleta = guardarUsuOrigen + "\n" + guardarMensaje + "\n" + fecha;
                         guardarMensajes.add(guardarFilaCompleta);
                        // Toast.makeText(getApplicationContext(), guardarFilaCompleta, Toast.LENGTH_SHORT).show();
                        // Log.e("BIENBIEN", "" + ":"+ " animales: " + animal);
                        // usuarioslista.add(species);
                         //String name = animal.getString("name");
                         //println(id + ", " + species + ", " + name);
+
+                        listaMensajes.add(new MensajesPlantilla(usuarioOrigen,guardarMensaje,fecha));
                     }
                     if (tamanoAnterior == guardarMensajes.size()){
                         semaforo=false;
@@ -117,8 +121,9 @@ boolean semaforo = true;
                         semaforo=true;
                     }
                     if (semaforo==true){
-                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(ChatMensaje.this, android.R.layout.simple_spinner_dropdown_item, guardarMensajes);
-                        verMensaje.setAdapter(adapter);
+                       // ArrayAdapter<String> adapter = new ArrayAdapter<String>(ChatMensaje.this, android.R.layout.simple_spinner_dropdown_item, listaMensajes);
+                        AdaptadorMensaje miAdaptador = new AdaptadorMensaje(getApplicationContext(),listaMensajes);
+                        verMensaje.setAdapter(miAdaptador);
                     }
                     tamanoAnterior  =  guardarMensajes.size();
 
