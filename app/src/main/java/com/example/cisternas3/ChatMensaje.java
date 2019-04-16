@@ -40,18 +40,19 @@ boolean semaforo = true;
         usuarioOrigen = getIntent().getExtras().getString("usuOrigen");
         usuarioDestino = getIntent().getExtras().getString("usuDestino");
         verMensaje = (ListView) findViewById(R.id.verMensaje);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm a", Locale.getDefault());
-        Date date = new Date();
 
-
-
-        fecha = dateFormat.format(date);
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 obtenerMensaje();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm a", Locale.getDefault());
+                Date date = new Date();
+
+
+
+                fecha = dateFormat.format(date);
                 handler.postDelayed(this, 1000);
             }
         }, 1000);
@@ -76,14 +77,14 @@ boolean semaforo = true;
             }
         };
 
-        insertarMensajeRequest insertarMensajeRequest=new insertarMensajeRequest(usuarioOrigen,usuarioDestino,guardarMensaje,responseListener);
+        insertarMensajeRequest insertarMensajeRequest=new insertarMensajeRequest(usuarioOrigen,usuarioDestino,guardarMensaje, fecha,responseListener);
         RequestQueue queue = Volley.newRequestQueue(ChatMensaje.this);
         queue.add(insertarMensajeRequest);
     }
 
     public void obtenerMensaje() {
         Response.Listener<String> responseListener = new Response.Listener<String>() {
-            String guardarIdMensaje, guardarUsuOrigen, guardarUsuDestino, guardarMensaje;
+            String guardarIdMensaje, guardarUsuOrigen, guardarUsuDestino, guardarMensaje, guardarFechaHora;
             String guardarFilaCompleta;
             final ArrayList<String> guardarMensajes = new ArrayList<>();
             final ArrayList<MensajesPlantilla> listaMensajes = new ArrayList<MensajesPlantilla>();
@@ -104,7 +105,7 @@ boolean semaforo = true;
                         guardarUsuOrigen = animal.getString("usuarioOrigen");
                         guardarUsuDestino = animal.getString("usuarioDestino");
                         guardarMensaje = animal.getString("mensaje");
-
+                        guardarFechaHora = animal.getString("FechaHora");
                         //guardarFilaCompleta = guardarUsuOrigen + "\n" + guardarMensaje + "\n" + fecha;
                         guardarMensajes.add(guardarFilaCompleta);
                        // Toast.makeText(getApplicationContext(), guardarFilaCompleta, Toast.LENGTH_SHORT).show();
@@ -113,7 +114,7 @@ boolean semaforo = true;
                         //String name = animal.getString("name");
                         //println(id + ", " + species + ", " + name);
 
-                        listaMensajes.add(new MensajesPlantilla(usuarioOrigen,guardarMensaje,fecha));
+                        listaMensajes.add(new MensajesPlantilla(usuarioOrigen,guardarMensaje,guardarFechaHora));
                     }
                     if (tamanoAnterior == guardarMensajes.size()){
                         semaforo=false;
