@@ -85,7 +85,7 @@ public class Principal extends AppCompatActivity {
                     recogidaFecha2 = jsonResponse.getString("recogidaFecha");
                     recogidaKm2 = jsonResponse.getString("recogidaKm");
                     if (success) {
-                        Toast.makeText(getApplicationContext(), "BIEN " + recogidaFecha2, Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(getApplicationContext(), "BIEN " + recogidaFecha2, Toast.LENGTH_SHORT).show();
                         Log.e("ALGOVABIEN", "" + recogidaFecha2 + " recogidaKM: " + recogidaKm2);
                         datosSQL.add(recogidaFecha2);
                         datosSQL.add(recogidaKm2);
