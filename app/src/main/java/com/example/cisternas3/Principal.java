@@ -39,6 +39,7 @@ public class Principal extends AppCompatActivity {
     String idNombreVentana;
     ArrayList<String> datosSQL = new ArrayList<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
