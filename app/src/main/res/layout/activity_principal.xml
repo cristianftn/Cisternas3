@@ -267,19 +267,21 @@
 
     <ImageView
         android:id="@+id/chat"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_width="102dp"
+        android:layout_height="86dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="412dp"
+        android:layout_marginTop="428dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:background="@android:color/transparent"
         android:onClick="chat"
+        android:tint="#009688"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintHorizontal_bias="0.081"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/images" />
+        app:srcCompat="@android:drawable/stat_notify_chat" />
 
 
 </android.support.constraint.ConstraintLayout>
